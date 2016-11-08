@@ -74,4 +74,18 @@ class Cell extends AbstractContainer
     {
         return $this->width;
     }
+
+    /**
+     * Add multi-line text
+     *
+     * @return \PhpOffice\PhpWord\Style\Cell
+     */
+    public function addMultiLineText($text, $fontStyle = null)
+    {
+        $strArr = explode('\n', $text);
+        foreach ($strArr as $v) {
+            $this->addText($v, $fontStyle);
+        }
+        return $this;
+    }
 }
