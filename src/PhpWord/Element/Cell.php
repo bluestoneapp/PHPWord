@@ -80,11 +80,14 @@ class Cell extends AbstractContainer
      *
      * @return \PhpOffice\PhpWord\Style\Cell
      */
-    public function addMultiLineText($text, $fontStyle = null)
+    public function addMultiLineText($text, $fStyle = null, $pStyle = null)
     {
+        // break from line breaks
         $strArr = explode('\n', $text);
+
+        // add text line together
         foreach ($strArr as $v) {
-            $this->addText($v, $fontStyle);
+            $this->addText($v, $fStyle, $pStyle);
         }
         return $this;
     }
