@@ -74,4 +74,32 @@ class Cell extends AbstractContainer
     {
         return $this->width;
     }
+
+    /**
+     * Add multi-line text
+     *
+     * @return $this
+     */
+    public function addMultiLineText($text, $fStyle = null, $pStyle = null)
+    {
+        $strArr = [];
+        // break from real line breaks
+        $lineArr = explode(PHP_EOL, $text);
+
+        // break from line break markers
+        foreach ($lineArr as $v) {
+            $strArr = array_merge($strArr, explode('\n', $v));
+        }
+
+        // remove empty lines
+        $strArr = array_filter($strArr, function($v) {
+            return trim($v);
+        });
+
+        // add text line together
+        foreach ($strArr as $v) {
+            $this->addText($v, $fStyle, $pStyle);
+        }
+        return $this;
+    }
 }

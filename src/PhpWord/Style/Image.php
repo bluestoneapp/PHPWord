@@ -60,7 +60,7 @@ class Image extends Frame
     public function __construct()
     {
         parent::__construct();
-        $this->setUnit('px');
+        $this->setUnit('pt');
 
         // Backward compatilibity setting
         // @todo Remove on 1.0.0
